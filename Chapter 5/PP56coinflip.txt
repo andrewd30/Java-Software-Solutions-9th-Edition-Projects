@@ -1,0 +1,36 @@
+import java.util.Random;
+public class FlipRace
+{
+    public static void main (String[]args){
+        Coin coin1 = new Coin();
+        Coin coin2 = new Coin();
+        int count =0;
+        int coin1H=0;
+        int coin2H=0;
+        while (coin1H !=3 && coin2H !=3){
+            count++;
+            coin1.flip();
+            coin2.flip();
+            if(coin1.isHeads()){
+                coin1H++;
+            }else{
+                coin1H=0;
+            }
+            //the counter for the second coin
+            if(coin2.isHeads()){
+                coin2H++;
+            }else{
+                coin2H=0;
+            }
+            System.out.println("Coin1 flipped: "+coin1 + " and Coin2 flipped: " + coin2);
+        }
+        if (coin1H==3){
+        System.out.println("coin1 got 3 in a row!");
+        }else if (coin2H==3){
+        System.out.println("coin2 got 3 in a row!");
+        }else if (coin2H==3 && coin1H==3){
+        System.out.println("It was a tie!");
+        }
+        System.out.println("There was " + count + " amount of flips."); 
+    }
+}
