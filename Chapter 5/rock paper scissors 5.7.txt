@@ -1,0 +1,57 @@
+import java.util.Scanner;
+import java.util.Random;
+public class RPS57
+{
+    public static void main(String[]args){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("press \'n\' at anytime to quit, enter rock paper or scissors to keep playing");
+        System.out.println("Rock... Paper... Scissors ");
+        String input = scan.next();
+        Random gen = new Random();
+        int random = gen.nextInt(2)+1;
+        int win=0;
+        int tie=0;
+        int loss=0;
+        //1=rock
+        //2=paper
+        //3=scissors
+        while(!input.equalsIgnoreCase("n")){
+            //rock cases
+            if (input.equalsIgnoreCase("rock") && random==1){
+                System.out.println("Rock, it was a tie");
+                tie++;
+            }else if(input.equalsIgnoreCase("paper") && random==1){
+                System.out.println("rock, you win");
+                win++;
+            }else if(input.equalsIgnoreCase("scissors") && random==1){
+                System.out.println("rock, i win!");
+                loss++;
+            }
+            //paper cases
+            if (input.equalsIgnoreCase("rock") && random==2){
+                System.out.println("Paper, i win!");
+                loss++;
+            }else if(input.equalsIgnoreCase("paper") && random==2){
+                System.out.println("Paper, it was a tie");
+                tie++;
+            }else if(input.equalsIgnoreCase("scissors") && random==2){
+                System.out.println("Paper, i lose...");
+                win++;
+            }
+            //scissors cases
+            if (input.equalsIgnoreCase("rock") && random==3){
+                System.out.println("Scissors, i lose...");
+                win++;
+            }else if(input.equalsIgnoreCase("paper") && random==3){
+                System.out.println("Scissors, i win!");
+                loss++;
+            }else if(input.equalsIgnoreCase("scissors") && random==3){
+                System.out.println("Scissors, it was a tie");
+                tie++;
+            }
+            input = scan.next();
+            random=gen.nextInt(2)+1;
+        }
+        System.out.println("You won "+win+" times, lost "+loss+" times, and tied "+tie+" times.");
+    }
+}
