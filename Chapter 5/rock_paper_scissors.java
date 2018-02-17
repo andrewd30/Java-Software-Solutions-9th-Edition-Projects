@@ -1,21 +1,19 @@
-import java.util.Scanner;
-import java.util.Random;
-public class RPS57
-{
+import java.util.*;
+public class rock_paper_scissors {
     public static void main(String[]args){
         Scanner scan = new Scanner(System.in);
-        System.out.println("press \'n\' at anytime to quit, enter rock paper or scissors to keep playing");
-        System.out.println("Rock... Paper... Scissors ");
+        Random rand = new Random();
+        
+        System.out.println("Type \'quit\' to quit.");
         String input = scan.next();
-        Random gen = new Random();
-        int random = gen.nextInt(2)+1;
+        int random = rand.nextInt(3)+1;
         int win=0;
         int tie=0;
         int loss=0;
         //1=rock
         //2=paper
         //3=scissors
-        while(!input.equalsIgnoreCase("n")){
+        while(!input.equalsIgnoreCase("quit")){
             //rock cases
             if (input.equalsIgnoreCase("rock") && random==1){
                 System.out.println("Rock, it was a tie");
@@ -50,8 +48,8 @@ public class RPS57
                 tie++;
             }
             input = scan.next();
-            random=gen.nextInt(2)+1;
+            random=rand.nextInt(2)+1;
         }
-        System.out.println("You won "+win+" times, lost "+loss+" times, and tied "+tie+" times.");
+        System.out.println("Wins: "+win+"\nLosses: "+loss+"\nTies: "+tie);
     }
 }
