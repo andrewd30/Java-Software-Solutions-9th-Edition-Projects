@@ -1,5 +1,5 @@
 import java.util.*;
-public class rock_paper_scissors {
+public class RockPaperScissors {
     public static void main(String[]args){
         Scanner scan= new Scanner(System.in);
         Random rand= new Random();
