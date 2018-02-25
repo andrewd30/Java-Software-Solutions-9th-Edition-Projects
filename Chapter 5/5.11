@@ -1,0 +1,37 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Testing
+{
+    public static void main (String[]args){
+        System.out.println("this is a program that will roll die");
+        Random gen = new Random();
+        Scanner scan = new Scanner(System.in);
+        Die die1 = new Die();
+        Die die2 = new Die();
+        int hmnScore = 0;
+        int cpuScore = 0;
+        int hmnStor = 0;
+        int cpuStor = 0;
+        
+        while(hmnScore<100 && cpuScore<100){
+        
+            hmnStor = die1.roll();
+            cpuStor = die2.roll();
+            System.out.println("you rolled a "+hmnStor+" and the computer rolled a "+cpuStor);
+            if (hmnStor==1){
+            hmnStor=0;
+            System.out.println("you rolled a 1 and your points were docked");
+            }else if (cpuStor==1){
+            cpuStor=0;
+            System.out.println("the computer rolled a 1 and its points were docked");
+            }
+            hmnScore+= hmnStor;
+            cpuScore+= cpuStor;
+            hmnStor=0;
+            cpuStor=0;
+            System.out.println("your score is "+hmnScore+" and the computers score is "+cpuScore);
+        }
+        
+    }
+  }
