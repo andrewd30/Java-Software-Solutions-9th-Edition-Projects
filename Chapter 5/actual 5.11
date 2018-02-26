@@ -1,0 +1,80 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Pig
+{
+    public static void main (String[]args){
+        System.out.println("this is a program that will roll die");
+        System.out.println("Roll a dice to accumulate points. If you roll a 1, then you lose all the points from this round. \n You can switch the die at any time by typing \'s\' get to 100 before the computer to win");
+
+        Random gen = new Random();
+        Scanner scan = new Scanner(System.in);
+        Die die1 = new Die();
+        Die die2 = new Die();
+        int hmnScore = 0;
+        int cpuScore = 0;   
+        int hmnStor = 0;
+        int roll=0;
+        int roll2=0;
+        int ones=0;
+        int cpuOnes=0;
+        int croll=0;
+        int croll2=0;
+        int cpuStor = 0;
+        String response = "";
+        //roll until you have a 1
+        //a while loop for you condition that there isnt 2 ones ina row
+        //a while loop for the bot condition that there istn 2 ones in a row and less than 20
+        while(hmnScore<100 && cpuScore<100){
+
+            while (!response.equalsIgnoreCase("s") && ones<1 && cpuScore<100){
+                roll = die1.roll();
+                roll2 = die2.roll();
+                System.out.println("you rolled a "+roll+", and a "+roll2+" if you wish to continue, press enter");  
+                hmnStor+=(roll+roll2);
+                if(roll==1 || roll2==1){
+                    hmnStor=0;
+                    ones++;
+                    System.out.println("you rolled a 1 and lost the points for this round, press enter to continue");
+                }else if (roll==1 && roll2==1){
+                    System.out.println("you pig, you rolled 2 ones in a row and now you have zero points");
+                    hmnScore=0;
+                }
+                response=scan.nextLine();
+            }
+            System.out.println("points earned this round: "+hmnStor);
+            hmnScore+=hmnStor;
+            System.out.println("your score is "+hmnScore);
+            hmnStor=0;
+            ones=0;
+            
+            while(cpuStor<20 && cpuOnes<1 && hmnScore<100){
+                croll=die2.roll();
+                croll2=die1.roll();
+                cpuStor+=(croll+croll2);
+                System.out.println("the computer rolled a "+croll+" and a "+croll2);
+                if(croll==1 || croll2==1){
+                    System.out.println("the computer rolled a 1 and set this turns score to zero");
+                    cpuStor=0;
+                    cpuOnes++;
+                }else if (croll==1 && croll2==1){
+                    System.out.println("the computer rolled 2 ones in a row and now has zero points in total");
+                    cpuScore=0;
+                    cpuOnes++;
+                }
+            }
+            cpuScore+=cpuStor;
+            cpuOnes=0;
+            cpuStor=0;
+            System.out.println("the computer\'s score is "+cpuScore);
+            System.out.println("Press enter to contintue");
+            response=scan.nextLine();
+            
+            if(cpuScore>100){
+            System.out.println("the computer wins");
+            }else if (hmnScore>100){
+            System.out.println("You win!");
+            }
+        }
+    }
+}
